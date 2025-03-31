@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/header.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
     <title>My site</title>
   </head>
 
@@ -10,13 +11,13 @@
     <header>
       <div class="topBar">
         <div class="">
-          <img src="{{url_for('static',filename = 'images/logo.jpg')}}" alt="Logo" class="logo">
+          <img src="{{ url_for('static', filename='images/boat.png') }}" alt="Logo" class="logo">
           <ul class="barItem">
-
             <li><a href="/">HOME</a></li>
             <li>SERVICES</li>
             <li>ABOUT</li>
             <li>CONTACT</li>
+            <li><a href="/search">SEARCH</a></li>
           </ul>
         </div>
 

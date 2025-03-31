@@ -4,31 +4,49 @@
         font-size: 16px;
         flex-wrap: wrap;
         width: 1140px;
-        margin: auto;
+        margin: auto;   
     }
 
     .boat {
         min-width: 200px;
         padding: 10px;
+        background-color: #d0bcb1; /* Grey Silk */
+        color: #664242; /* Pink Ebony */
+        font-family: 'Raleway', sans-serif;
+        border-radius: 8px;
+        margin: 8px;
     }
+
+    .boat {
+  transition: transform 0.2s ease;
+}
+
+.boat:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
     .pagination_bar {
         display: flex;
         justify-content: flex-end;
         width: 1140px;
         margin: auto;
+        margin-top: 20px;
     }
+
     .pagination_button {
+        font-family: 'Raleway', sans-serif;
         font-size: 20px;
-        background-color: #4CAF50; /* Green */
+        background-color: #af8382; 
         border: none;
-        color: white;
+        color: #fff;
         padding: 2px 2px 4px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
-        width: 30px;
-    }
+        display: inline-block; 
+         width: 30px; 
+     }
+
 
     .column {
         display: flex;
@@ -45,24 +63,31 @@
     {% set prev_page = page - 1 %}  <!-- variables in jinja --->
     <div class="column">
         <h3>Page {{ page }}</h3>
-
         <div class="flex-box">
             {% for boat in boats %}
-                <div class="boat">
+              <a href="/boats/{{ page }}/{{ boat.id }}" style="text-decoration: none;">
+                <div class="boat" style="cursor: pointer;">
+                  
+                  <!-- ✅ Boat image at top of card -->
+                  <img src="{{ url_for('static', filename='images/woodenboat.png') }}" alt="Boat Image" style="width: 100%; border-radius: 10px 10px 0 0;">
+          
+                  <!-- ✅ Boat details below -->
+                  <ul style="padding: 10px;">
+                    <li><strong>Boat id:</strong> {{ boat.id }}</li>
                     <ul>
-                        <li>Boat id: {{ boat['id'] }}</li>
-                        <ul>
-                            <li>Name: {{ boat['name'] }}</li>
-                            <li>Type: {{ boat['type'] }}</li>
-                            <li>Owner ID: {{ boat['owner_id'] }}</li>
-                            <li>Price: {{ boat['rental_price'] }}</li>
-                        </ul>
+                      <li><strong>Name:</strong> {{ boat.name }}</li>
+                      <li><strong>Type:</strong> {{ boat.type }}</li>
+                      <li><strong>Owner ID:</strong> {{ boat.owner_id }}</li>
+                      <li><strong>Price:</strong> {{ boat.rental_price }}</li>
                     </ul>
+                  </ul>
                 </div>
+              </a>
             {% endfor %}
-
+          </div>
+          
             {% if boats | length < 1 %}
-                <h1>No data available</h1>
+                <ah1>No data available</h1>
             {% endif %}
         </div>
 
