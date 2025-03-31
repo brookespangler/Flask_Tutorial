@@ -13,7 +13,6 @@ def index():
     return render_template('index.html')
 
 
-# remember how to take user inputs?
 @app.route('/user/<name>')
 def user(name):
     return render_template('user.html', name=name)
@@ -29,7 +28,6 @@ def get_boats(page=1):
     boats = conn.execute(text(f"SELECT * FROM boats LIMIT {per_page} OFFSET {(page - 1) * per_page}")).all()
     print(boats)
     return render_template('boats.html', boats=boats, page=page, per_page=per_page)
-
 
 @app.route('/create', methods=['GET'])
 def create_get_request():
