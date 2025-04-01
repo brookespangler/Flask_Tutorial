@@ -76,20 +76,20 @@ def boat_detail(page, boat_id):
         return f"No boat found with ID {boat_id}", 404
 
 #delete boat function
-@app.route('/delete', methods=['GET', 'POST'])
-def delete_boat():
-    message = None
-    if request.method == 'POST':
-        boat_id = request.form['id']
-        boat = conn.execute(text("SELECT * FROM boats WHERE id = :id"), {"id": boat_id}).fetchone()
+# @app.route('/delete', methods=['GET', 'POST'])
+# def delete_boat():
+#     message = None
+#     if request.method == 'POST':
+#         boat_id = request.form['id']
+#         boat = conn.execute(text("SELECT * FROM boats WHERE id = :id"), {"id": boat_id}).fetchone()
 
-        if boat:
-            conn.execute(text("DELETE FROM boats WHERE id = :id"), {"id": boat_id})
-            message = f"Boat with ID {boat_id} was deleted."
-        else:
-            message = f"No boat found with ID {boat_id}."
+#         if boat:
+#             conn.execute(text("DELETE FROM boats WHERE id = :id"), {"id": boat_id})
+#             message = f"Boat with ID {boat_id} was deleted."
+#         else:
+#             message = f"No boat found with ID {boat_id}."
 
-    return render_template('boats_delete.html', message=message)
+#     return render_template('boats_delete.html', message=message)
 
 
 @app.route('/update', methods=['GET', 'POST'])
