@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="mainDiv" style="margin-top: 30px;">
+  <h2 style="text-align:center;">Boat Details</h2>
+
+  <div class="boat" style="padding: 20px; border-radius: 10px; background-color: #e9dcd6; color: #664242; max-width: 400px; margin: auto;">
+    <img src="{{ url_for('static', filename='images/woodenboat.png') }}" alt="Boat Image" style="width: 100%; border-radius: 10px;">
+    <ul style="padding: 10px; list-style-type: none;">
+      <li><strong>Boat ID:</strong> {{ boat.id }}</li>
+      <li><strong>Name:</strong> {{ boat.name }}</li>
+      <li><strong>Type:</strong> {{ boat.type }}</li>
+      <li><strong>Owner ID:</strong> {{ boat.owner_id }}</li>
+      <li><strong>Rental Price:</strong> ${{ boat.rental_price }}</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <a href="/boats/{{ page }}" style="text-decoration: none; color: #af8382;">← Back to Page {{ page }}</a>
+  </div>
+</div>
+{% endblock %}

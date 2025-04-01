@@ -50,6 +50,7 @@ def create_boat():
         print(error)
         return render_template('boats_create.html', error=error, success=None)
 
+#function for search 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
@@ -61,6 +62,7 @@ def search():
         return render_template('boats_search.html', boats=result, query=keyword)
     return render_template('boats_search.html', boats=None)
 
+#function for clickable boat page 
 @app.route('/boats/<int:page>/<int:boat_id>')
 def boat_detail(page, boat_id):
     boat = conn.execute(
@@ -72,6 +74,54 @@ def boat_detail(page, boat_id):
         return render_template('boats_detail.html', boat=boat, page=page)
     else:
         return f"No boat found with ID {boat_id}", 404
+
+#delete boat function
+@app.route('/delete', methods=['GET', 'POST'])
+def delete_boat():
+    message = None
+    if request.method == 'POST':
+        boat_id = request.form['id']
+        boat = conn.execute(text("SELECT * FROM boats WHERE id = :id"), {"id": boat_id}).fetchone()
+
+        if boat:
+            conn.execute(text("DELETE FROM boats WHERE id = :id"), {"id": boat_id})
+            message = f"Boat with ID {boat_id} was deleted."
+        else:
+            message = f"No boat found with ID {boat_id}."
+
+    return render_template('boats_delete.html', message=message)
+
+
+@app.route('/update', methods=['GET', 'POST'])
+def update_boat():
+    boat = None
+    message = None
+    error = None
+
+    if request.method == 'POST':
+        form = request.form
+        boat_id = form['id']
+
+        boat = conn.execute(
+            text("SELECT * FROM boats WHERE id = :id"),
+            {"id": boat_id}
+        ).fetchone()
+
+        if boat:
+            try:
+                conn.execute(text("""
+                    UPDATE boats
+                    SET name = :name, type = :type, owner_id = :owner_id, rental_price = :rental_price
+                    WHERE id = :id
+                """), form)
+                message = f"Boat with ID {boat_id} updated successfully."
+            except Exception as e:
+                error = str(e)
+        else:
+            error = f"No boat found with ID {boat_id}."
+
+    return render_template('boats_update.html', boat=boat, message=message, error=error)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
