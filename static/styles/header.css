@@ -6,6 +6,11 @@
   width: 45px;
 }
 
+li{
+  color:#af8382;
+  font-family: 'Raleway', sans-serif;
+}
+
 header li {
   float: left;
   display: block;
@@ -14,7 +19,7 @@ header li {
 }
 
 .topBar{
-  background-color: #faf9f7;
+  background-color: #664242;
   display:flex;
   justify-content: space-between;
   align-items:center;
@@ -31,6 +36,9 @@ header li {
   border: none;
   border-radius: 5px;
   margin-left: 10px;
+  background-color: #e9dcd6;
+  color: #664242;
+  font-family: 'Raleway', sans-serif;
 }
 
 .mainDiv {
@@ -41,12 +49,24 @@ header li {
 
 h1{
   text-align: center;
+  color: #e9dcd6;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+
 }
 
 header a{
   text-decoration:none;
-  color:black;
+  color: #e9dcd6;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
+
+header a{
+  color: #af8382;
+}
+
+
 
 /* FOOTER */
 
@@ -59,12 +79,13 @@ html {
 }
 
 body {
-  font-family: acumin-pro, system-ui, sans-serif;
+  font-family: 'Playfair Display', serif;
   margin: 0;
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-size: 14px;
-  background-color: #f4f4f4;
+  background-color: #746770; /* Pearl Blackberry */
+  color: #e9dcd6; /* Almond*/
   align-items: start;
   min-height: 100vh;
 }
@@ -73,9 +94,9 @@ body {
   display: flex;
   flex-flow: row wrap;
   padding: 30px 30px 20px 30px;
-  color: #2f2f2f;
-  background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+  background-color: #664242;
+  color: #e9dcd6;
+  border-top: 1px solid #af8382;
 }
 
 .footer > * {
@@ -88,9 +109,9 @@ body {
 }
 
 .footer__logo {
-  font-family: 'Pacifico', cursive;
-  font-weight: 400;
+  font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
+  font-weight: 600;
   text-align: left;
 }
 
@@ -105,9 +126,22 @@ body {
   font-size: 15px;
 }
 
+
+.nav__title,
+.footer__addr h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  color: #e9dcd6;
+}
+
 .footer address {
   font-style: normal;
   color: #999;
+}
+
+.footer a,
+.footer address {
+  color: #e9dcd6;
 }
 
 .footer__btn {
@@ -116,13 +150,14 @@ body {
   justify-content: center;
   height: 36px;
   max-width: max-content;
-  background-color: rgb(33, 33, 33, 0.07);
   border-radius: 100px;
-  color: #2f2f2f;
   line-height: 0;
   margin: 0.6em 0;
   font-size: 1rem;
   padding: 0 1.3em;
+  background-color: #af8382;
+  color: #e9dcd6;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer ul {
@@ -169,7 +204,7 @@ body {
 }
 
 .heart {
-  color: #2f2f2f;
+  color: #af8382;
 }
 
 @media screen and (min-width: 24.375em) {
