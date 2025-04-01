@@ -6,6 +6,11 @@
   width: 45px;
 }
 
+li{
+  color:#af8382;
+  font-family: 'Raleway', sans-serif;
+}
+
 header li {
   float: left;
   display: block;
